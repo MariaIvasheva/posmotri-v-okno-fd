@@ -98,6 +98,7 @@ ol {
 
 .search-form__label {
   display: flex;
+  align-items: center;
   width: fit-content;
   cursor: pointer;
 }
@@ -162,58 +163,22 @@ ol {
   appearance: none;
 }
 
-.search-form__checkbox + span {
+.search-form__pseudo-checkbox {
   display: flex;
-  place-content: center;
-  width: 19px; /* Пример размера */
-  height: 19px; /* Пример размера */
-  border: 1px double rgb(252, 252, 252); /* Устанавливаем рамку */
-  background-color: transparent; /* Цвет фона */
-  /* position: relative; */ /* Добавляем позицию для внутреннего элемента */
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgb(252, 252, 252);
+  transition: background-color 0.5s ease;
+  inline-size: 19px;
+  block-size: 19px;
 }
 
-.search-form__checkbox + span::before {
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
   content: "";
-  place-self: center;
-  width: 15px; /* Размер внутреннего квадрата */
-  height: 15px; /* Размер внутреннего квадрата */
-  background-color: transparent; /*Начальное состояние прозрачности */
-  transition: background-color 0.3s; /*Плавное изменение прозрачности */
-
+  background-color: rgb(252, 252, 252);
+  min-inline-size: 15px;
+  min-block-size: 15px;
 }
-
-.search-form__checkbox:checked + span::before {
-  opacity: 1; /* Полная прозрачность при нажатии */
-  background-color: white; /* Цвет "чека" при нажатии */
-  /* display: block; */  /*Псевдоэлемент уже является блочным элементом из-за заданных размеров */
-
-}
-
-/* .search-form__checkbox + span {
-  position: relative; 
-  width: 19px; 
-  height: 19px;
-  border: 1px double rgb(252, 252, 252);
-  background-color: transparent; 
-}
-
-.search-form__checkbox + span::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: block;
-  width: 15px; 
-  height: 15px; 
-  background-color: transparent; 
-  transition: background-color 0.3s;
-  transform: translate(-50%, -50%);
-}
-
-.search-form__checkbox:checked + span::before {
-  opacity: 1; 
-  background-color: white; 
-} */
 
 .search-form__label:has(.search-form__checkbox:focus-visible) {
   outline: 1px solid rgb(255, 255, 255, 1);
@@ -258,6 +223,7 @@ ol {
 }
 
 .search-form__submit-button {
+  align-self: flex-end;
   width: 194px;
   margin-top: 20px;
 }
