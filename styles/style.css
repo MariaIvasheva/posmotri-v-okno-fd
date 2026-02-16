@@ -163,11 +163,38 @@ ol {
 }
 
 .search-form__checkbox + span {
-  position: relative; /* Добавляем позицию для внутреннего элемента */
+  display: flex;
+  place-content: center;
   width: 19px; /* Пример размера */
   height: 19px; /* Пример размера */
   border: 1px double rgb(252, 252, 252); /* Устанавливаем рамку */
   background-color: transparent; /* Цвет фона */
+  /* position: relative; */ /* Добавляем позицию для внутреннего элемента */
+}
+
+.search-form__checkbox + span::before {
+  content: "";
+  place-self: center;
+  width: 15px; /* Размер внутреннего квадрата */
+  height: 15px; /* Размер внутреннего квадрата */
+  background-color: transparent; /*Начальное состояние прозрачности */
+  transition: background-color 0.3s; /*Плавное изменение прозрачности */
+
+}
+
+.search-form__checkbox:checked + span::before {
+  opacity: 1; /* Полная прозрачность при нажатии */
+  background-color: white; /* Цвет "чека" при нажатии */
+  /* display: block; */  /*Псевдоэлемент уже является блочным элементом из-за заданных размеров */
+
+}
+
+/* .search-form__checkbox + span {
+  position: relative; 
+  width: 19px; 
+  height: 19px;
+  border: 1px double rgb(252, 252, 252);
+  background-color: transparent; 
 }
 
 .search-form__checkbox + span::before {
@@ -176,17 +203,17 @@ ol {
   top: 50%;
   left: 50%;
   display: block;
-  width: 15px; /* Размер внутреннего квадрата */
-  height: 15px; /* Размер внутреннего квадрата */
-  background-color: transparent; /*Начальное состояние прозрачности */
-  transition: background-color 0.3s; /*Плавное изменение прозрачности */
+  width: 15px; 
+  height: 15px; 
+  background-color: transparent; 
+  transition: background-color 0.3s;
   transform: translate(-50%, -50%);
 }
 
 .search-form__checkbox:checked + span::before {
-  opacity: 1; /* Полная прозрачность при нажатии */
-  background-color: white; /* Цвет "чека" при нажатии */
-}
+  opacity: 1; 
+  background-color: white; 
+} */
 
 .search-form__label:has(.search-form__checkbox:focus-visible) {
   outline: 1px solid rgb(255, 255, 255, 1);
